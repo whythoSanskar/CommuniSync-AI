@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { videoPlay } from "../utils";
 import CardSection from "./CardSection";
 import { Link } from "react-router-dom";
@@ -55,6 +55,7 @@ const Landing = () => {
               type="video/mp4"
               width={640}
               height={360}
+              loop={true}
               className="w-full rounded-lg shadow-lg"
             />
           </div>

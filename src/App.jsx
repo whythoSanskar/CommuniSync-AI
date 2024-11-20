@@ -1,12 +1,18 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './Components/Navbar';
-import Landing from './Components/Landing';
-import Login from './Components/Login';
-// import Signup from './components/Signup';
-import Interview from './Components/Interview';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./Components/Navbar";
+import Landing from "./Components/Landing";
+import Login from "./Components/Login";
+import Interview from "./Components/Interview";
+import Feedback from "./Components/Feedback";
 
 function App() {
+  const [interviewStats, setInterviewStats] = useState(null);
+
+  const handleEndInterview = (stats) => {
+    setInterviewStats(stats);
+  };
+
   return (
     <Router>
       <div>
@@ -14,8 +20,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
-          {/* <Route path="/signup" element={<Signup />} /> */}
-          <Route path="/interview" element={<Interview />} />
+          <Route
+            path="/interview"
+            element={<Interview onEndInterview={handleEndInterview} />}
+          />
+          <Route 
+            path="/feedback" 
+            element={<Feedback stats={interviewStats} />} 
+          />
         </Routes>
       </div>
     </Router>
